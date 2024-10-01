@@ -48,7 +48,7 @@ int executeInstruction(int &acc, int &instCount, int &instReg, int &inReg, int (
             memory[page][row][column] = input;
             break;
         case WRITE:						// Write from memory to terminal
-            dumpCore(acc, instCount, instReg, inReg, memory, 0, 0);
+            cout << memory[page][row][column] << endl;
             break;
         case HALT:						// End execution of program
             dumpCore(acc, instCount, instReg, inReg, memory, 0, 0);
