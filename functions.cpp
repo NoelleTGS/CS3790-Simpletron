@@ -32,28 +32,25 @@ void dumpCore(const int acc, const int instCount, const int instReg, const int i
 // Takes as input all the registers and the memory
 int executeInstruction(int &acc, int &instCount, int &instReg, int &inReg, int (&memory)[PAGES][ROWS][COLUMNS]) {
 
+	//Separate the instructionRegister into the operation code (first two digits) and the operand (last four digits)
     const int opCode = instReg / 10000;
     const int operand = instReg % 10000;
-
-    cout << "instReg: " << instReg << endl;
-    cout << "opCode: " << opCode << endl;
-    cout << "instCount: " << instCount << endl;
 
     int page = operand / 100;
     int row = (operand % 100) / 10;
     int column = operand % 10;
 
     switch(opCode) {
-        case READ:
+        case READ:						// Read from terminal into memory
             int input;
             cout << "Input: ";
             cin >> input;
             memory[page][row][column] = input;
             break;
-        case WRITE:
+        case WRITE:						// Write from memory to terminal
             dumpCore(acc, instCount, instReg, inReg, memory, 0, 0);
             break;
-        case HALT:
+        case HALT:						// End execution of program
             dumpCore(acc, instCount, instReg, inReg, memory, 0, 0);
             return 1;
         default: break;

@@ -5,6 +5,10 @@
 
 using namespace std;
 
+// LOAD FROM FILE
+// This function takes as input the name of a file and the memory.
+// It will open the file with the given filename, and load it into
+// the memory line by line.
 void loadFile(string& fileName, int (&memory)[PAGES][ROWS][COLUMNS]) {
     ifstream inputFile;
     inputFile.open(fileName);
