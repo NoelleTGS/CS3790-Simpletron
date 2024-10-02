@@ -17,6 +17,7 @@ void loadFile(string& fileName, int (&memory)[PAGES][ROWS][COLUMNS]) {
     int counter = 0;
     while (getline(inputFile, line)) {
         line = line.substr(0, line.find(';'));              // Remove all comments from each line
+        if (line.length() < 6) continue;
         memory[counter / 100][counter % 100 / 10][counter % 10] = stoi(line);
         counter++;
     }
