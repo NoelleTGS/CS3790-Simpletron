@@ -1,6 +1,7 @@
 TARGET = main
 
 bin/$(TARGET) : $(TARGET).o functions.o
+	mkdir -p bin
 	g++ -o bin/$(TARGET) $(TARGET).o functions.o
 
 $(TARGET).o : $(TARGET).cpp common.hpp
