@@ -58,6 +58,14 @@ int executeInstruction(int &acc, int &instCount, int &instReg, int &inReg, int (
 			break;
 		case STORE:						// Store from accumulator into specified memory location
 			memory[page][row][column] = acc;
+		case ADD:
+			acc += memory[page][row][column];
+		case SUBTRACT:
+			acc -= memory[page][row][column];
+		case MULTIPLY:
+			acc *= memory[page][row][column];
+		case DIVIDE:
+			acc /= memory[page][row][column];
 		case HALT:						// End execution of program
 			dumpCore(acc, instCount, instReg, inReg, memory, 0, 0);
 			return 1;
