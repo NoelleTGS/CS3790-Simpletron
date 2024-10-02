@@ -55,6 +55,11 @@ int executeInstruction(int &acc, int &instCount, int &instReg, int &inReg, int (
 	const int row = (operand % 100) / 10;
 	const int column = operand % 10;
 
+	// For use with index register commands
+	const int pageIDX = inReg / 100;
+	const int rowIDX = (inReg % 100) / 10;
+	const int columnIDX = inReg % 10;
+
 	switch(opCode) {
 		case READ:						// Read from terminal into memory
 			int input;
@@ -71,20 +76,41 @@ int executeInstruction(int &acc, int &instCount, int &instReg, int &inReg, int (
 		case LOADIM:					// Load the operand into accumulator
 			acc = operand;
 			break;
+		case LOADX:
+			inReg = memory[page][row][column];
+			break;
+		case LOADIDX:
+			acc = inReg;
+			break;
 		case STORE:						// Store from accumulator into specified memory location
 			memory[page][row][column] = acc;
+			break;
+		case STOREIDX:
+			memory[pageIDX][rowIDX][columnIDX] = acc;
 			break;
 		case ADD:
 			acc += memory[page][row][column];
 			break;
+		case ADDX:
+			acc += memory[pageIDX][rowIDX][columnIDX];
+			break;
 		case SUBTRACT:
 			acc -= memory[page][row][column];
+			break;
+		case SUBTRACTX:
+			acc -= memory[pageIDX][rowIDX][columnIDX];
 			break;
 		case MULTIPLY:
 			acc *= memory[page][row][column];
 			break;
+		case MULTIPLYX:
+			acc *= memory[pageIDX][rowIDX][columnIDX];
+			break;
 		case DIVIDE:
 			acc /= memory[page][row][column];
+			break;
+		case DIVIDEX:
+			acc /= memory[pageIDX][rowIDX][columnIDX];
 			break;
 		case INC:
 			inReg++;
