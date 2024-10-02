@@ -9,7 +9,7 @@ using namespace std;
 // This function takes as input the name of a file and the memory.
 // It will open the file with the given filename, and load it into
 // the memory line by line.
-void loadFile(string& fileName, int (&memory)[PAGES][ROWS][COLUMNS]) {
+int loadFile(string& fileName, int (&memory)[PAGES][ROWS][COLUMNS]) {
     ifstream inputFile;
     inputFile.open(fileName);
 
@@ -23,6 +23,7 @@ void loadFile(string& fileName, int (&memory)[PAGES][ROWS][COLUMNS]) {
     }
 
     cout << "File fully loaded." << endl;
+    return 0;
 }
 
 int main() {
@@ -56,7 +57,7 @@ int main() {
         string fileName;
         cout << "Enter name of file, INCLUDING the file extension: ";
         cin >> fileName;
-        loadFile(fileName, memory);
+        if (loadFile(fileName, memory) == -1) return -1;
     } else {
         cout << "***    Please enter your program one instruction (or data word) at a time.     ***" << endl
              << "***     I will type the location number and a question mark (?). You then      ***" << endl
