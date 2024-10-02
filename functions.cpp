@@ -1,9 +1,12 @@
 #include "common.hpp"
-//#include <stdio.h>
 #include <iostream>
 
 using namespace std;
 
+// dumpCore function
+// Takes as parameters all the registers and the memory, along with a start page and an end page.
+// Prints out the current value of all registers, and then every page in the memory starting at
+// the startPage and ending at the endPage.
 void dumpCore(const int acc, const int instCount, const int instReg, const int inReg, int (&memory)[PAGES][ROWS][COLUMNS], const int startPage, const int endPage) {
 	printf("%-22s%06d\n", "accumulator", acc);
 	printf("%-22s%06d\n", "instructionCounter", instCount);
@@ -29,10 +32,12 @@ void dumpCore(const int acc, const int instCount, const int instReg, const int i
 }
 
 // executeInstruction function
-// Takes as input all the registers and the memory
+// Takes as parameters all the registers and the memory.
+// Executes the current instruction specified in the instruction register.
+// All operation codes are defined in the header file.
 int executeInstruction(int &acc, int &instCount, int &instReg, int &inReg, int (&memory)[PAGES][ROWS][COLUMNS]) {
 
-	//Separate the instructionRegister into the operation code (first two digits) and the operand (last four digits)
+	// Separate the instructionRegister into the operation code (first two digits) and the operand (last four digits)
 	const int opCode = instReg / 10000;
 	const int operand = instReg % 10000;
 
