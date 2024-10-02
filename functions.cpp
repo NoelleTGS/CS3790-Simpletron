@@ -91,6 +91,7 @@ int executeInstruction(int &acc, int &instCount, int &instReg, int &inReg, int (
 			return 1;
 		default:
 			raiseError(invalidOpcode);
+			dumpCore(acc, instCount, instReg, inReg, memory, 0, 0);
 			return -1;
 	}
 	instCount++;
