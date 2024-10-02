@@ -5,6 +5,7 @@ using namespace std;
 
 // All error codes
 const string invalidOpcode = "Invalid operation code.";
+const string divByZero = "Cannot divide by zero.";
 
 // dumpCore function
 // Takes as parameters all the registers and the memory, along with a start page and an end page.
@@ -107,9 +108,19 @@ int executeInstruction(int &acc, int &instCount, int &instReg, int &inReg, int (
 			acc *= memory[pageIDX][rowIDX][columnIDX];
 			break;
 		case DIVIDE:
+			if (memory[page][row][column] == 0) {
+				raiseError(divByZero);
+				dumpCore(acc, instCount, instReg, inReg, memory, 0, 0);
+				return -1;
+			}
 			acc /= memory[page][row][column];
 			break;
 		case DIVIDEX:
+			if (memory[pageIDX][rowIDX][columnIDX] == 0) {
+				raiseError(divByZero);
+				dumpCore(acc, instCount, instReg, inReg, memory, 0, 0);
+				return -1;
+			}
 			acc /= memory[pageIDX][rowIDX][columnIDX];
 			break;
 		case INC:
