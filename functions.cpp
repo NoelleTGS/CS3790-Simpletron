@@ -89,6 +89,12 @@ int executeInstruction(int &acc, int &instCount, int &instReg, int &inReg, int (
 		case HALT:						// End execution of program
 			dumpCore(acc, instCount, instReg, inReg, memory, 0, 0);
 			return 1;
+		case INC:
+			inReg++;
+			break;
+		case DEC:
+			inReg--;
+			break;
 		default:
 			raiseError(invalidOpcode);
 			dumpCore(acc, instCount, instReg, inReg, memory, 0, 0);
