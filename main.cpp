@@ -20,6 +20,8 @@ void loadFile(string& fileName, int (&memory)[PAGES][ROWS][COLUMNS]) {
         memory[counter / 100][counter % 100 / 10][counter % 10] = stoi(line);
         counter++;
     }
+
+    cout << "File fully loaded." << endl;
 }
 
 int main() {
