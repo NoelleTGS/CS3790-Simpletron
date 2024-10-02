@@ -56,6 +56,8 @@ int executeInstruction(int &acc, int &instCount, int &instReg, int &inReg, int (
 		case LOADIM:					// Load the operand into accumulator
 			acc = operand;
 			break;
+		case STORE:						// Store from accumulator into specified memory location
+			memory[page][row][column] = acc;
 		case HALT:						// End execution of program
 			dumpCore(acc, instCount, instReg, inReg, memory, 0, 0);
 			return 1;
