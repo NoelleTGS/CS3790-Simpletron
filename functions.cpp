@@ -95,6 +95,12 @@ int executeInstruction(int &acc, int &instCount, int &instReg, int &inReg, int (
 		case DEC:
 			inReg--;
 			break;
+		case SWAP: {					// Wrapped in code block due to variable initialization
+			const int temp = acc;
+			acc = inReg;
+			inReg = temp;
+			break;
+		}
 		default:
 			raiseError(invalidOpcode);
 			dumpCore(acc, instCount, instReg, inReg, memory, 0, 0);
