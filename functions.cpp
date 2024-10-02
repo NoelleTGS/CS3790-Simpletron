@@ -38,7 +38,7 @@ void dumpCore(const int acc, const int instCount, const int instReg, const int i
 // Takes as input the error to raise.
 // All errors are defined at the top of this file.
 void raiseError(const string& err) {
-	cout << err;
+	cout << err << endl;
 }
 
 // executeInstruction function
