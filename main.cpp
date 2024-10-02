@@ -43,8 +43,9 @@ int main() {
         }
     }
 
-    cout << "*** Welcome to Simpletron V2! ***" << endl
-         << "Do you have a file that contains your SML program? (y/N) ";
+    cout << "***                         Welcome to Simpletron V2!!                         ***" << endl
+         << "            Do you have a file that contains your SML program? (y/n) ";
+
     // LOADING PHASE
     // Loading values into the memory of the program. There are two different modes, one where it will read from a file
     // and one where values can be manually loaded.
