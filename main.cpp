@@ -57,7 +57,7 @@ int main() {
     // Loading values into the memory of the program. There are two different modes, one where it will read from a file
     // and one where values can be manually loaded.
     cin >> openFile;
-    openFile = tolower(openFile);
+    openFile = static_cast<char>(tolower(openFile));
     if (openFile == 'y') {
         string fileName;
         cout << "Enter name of file, INCLUDING the file extension: ";
