@@ -3,6 +3,9 @@
 
 using namespace std;
 
+// All error codes
+const string invalidOpcode = "Invalid operation code.";
+
 // dumpCore function
 // Takes as parameters all the registers and the memory, along with a start page and an end page.
 // Prints out the current value of all registers, and then every page in the memory starting at
@@ -29,6 +32,13 @@ void dumpCore(const int acc, const int instCount, const int instReg, const int i
 			cout << endl;
 		}
 	}
+}
+
+// raiseError function
+// Takes as input the error to raise.
+// All errors are defined at the top of this file.
+void raiseError(const string& err) {
+	cout << err;
 }
 
 // executeInstruction function
@@ -74,7 +84,9 @@ int executeInstruction(int &acc, int &instCount, int &instReg, int &inReg, int (
 		case HALT:						// End execution of program
 			dumpCore(acc, instCount, instReg, inReg, memory, 0, 0);
 			return 1;
-		default: break;
+		default:
+			raiseError(invalidOpcode);
+			return -1;
 	}
 	instCount++;
 	return 0;
