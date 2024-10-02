@@ -13,6 +13,11 @@ int loadFile(string& fileName, int (&memory)[PAGES][ROWS][COLUMNS]) {
     ifstream inputFile;
     inputFile.open(fileName);
 
+    if (!inputFile.is_open()) {
+        cout << "Cannot find file " << fileName << "." << endl;
+        return -1;
+    }
+
     string line;
     int counter = 0;
     while (getline(inputFile, line)) {
