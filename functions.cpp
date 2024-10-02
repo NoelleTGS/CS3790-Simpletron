@@ -86,9 +86,6 @@ int executeInstruction(int &acc, int &instCount, int &instReg, int &inReg, int (
 		case DIVIDE:
 			acc /= memory[page][row][column];
 			break;
-		case HALT:						// End execution of program
-			dumpCore(acc, instCount, instReg, inReg, memory, 0, 0);
-			return 1;
 		case INC:
 			inReg++;
 			break;
@@ -101,6 +98,9 @@ int executeInstruction(int &acc, int &instCount, int &instReg, int &inReg, int (
 			inReg = temp;
 			break;
 		}
+		case HALT:						// End execution of program
+			dumpCore(acc, instCount, instReg, inReg, memory, 0, 0);
+			return 1;
 		default:
 			raiseError(invalidOpcode);
 			dumpCore(acc, instCount, instReg, inReg, memory, 0, 0);
