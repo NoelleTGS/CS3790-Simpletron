@@ -92,6 +92,21 @@ int executeInstruction(int &acc, int &instCount, int &instReg, int &inReg, int (
 		case DEC:
 			inReg--;
 			break;
+		case BRANCH:					// Branches return 0 instead of breaking to prevent instruction counter from increasing
+			instCount = operand;
+			return 0;
+		case BRANCHNEG:
+			if (acc < 0) {
+				instCount = operand;
+				return 0;
+			}
+			break;
+		case BRANCHZERO:
+			if (acc == 0) {
+				instCount = operand;
+				return 0;
+			}
+			break;
 		case SWAP: {					// Wrapped in code block due to variable initialization
 			const int temp = acc;
 			acc = inReg;
