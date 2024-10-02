@@ -1,5 +1,7 @@
 TARGET = main
 
+all: bin/$(TARGET)
+
 bin/$(TARGET) : $(TARGET).o functions.o
 	mkdir -p bin
 	g++ -o bin/$(TARGET) $(TARGET).o functions.o
