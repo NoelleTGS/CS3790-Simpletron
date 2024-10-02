@@ -51,9 +51,9 @@ int executeInstruction(int &acc, int &instCount, int &instReg, int &inReg, int (
 	const int opCode = instReg / 10000;
 	const int operand = instReg % 10000;
 
-	int page = operand / 100;
-	int row = (operand % 100) / 10;
-	int column = operand % 10;
+	const int page = operand / 100;
+	const int row = (operand % 100) / 10;
+	const int column = operand % 10;
 
 	switch(opCode) {
 		case READ:						// Read from terminal into memory
